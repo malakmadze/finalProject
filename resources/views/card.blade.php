@@ -5,14 +5,10 @@
             <h3>{{$product->name}}</h3>
             <p> {{$product->price}}</p>
             <p>
-                <a href="{{route('cart')}}" class="btn btn-default"
+                <a href="{{route('cart')}}" class="btn btn-primary"
                    role="button">Add to cart</a>
-                {{$product->getCategory()->name}}   {{--Need to add ->name--}}
-{{--                @isset($category)--}}
-{{--                {{$category->name}}--}}
-{{--                @endisset--}}
-                <a href="http://internet-shop.tmweb.ru/mobiles/iphone_x_64" class="btn btn-default"
-                   role="button">Подробнее</a>
+                <a href="{{route('product', [$product->category, $product->code])}}" class="btn btn-default"
+                   role="button">Details</a>
             </p>
         </div>
     </div>
