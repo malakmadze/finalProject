@@ -5,10 +5,13 @@
             <h3>{{$product->name}}</h3>
             <p> {{$product->price}}</p>
             <p>
-                <a href="{{route('cart')}}" class="btn btn-primary"
-                   role="button">Add to cart</a>
+            <form action="{{route('cartAdd', $product)}}" method="post">
+                <button type="submit" class="btn btn-primary"
+                   role="button">Add to cart</button>
                 <a href="{{route('product', [$product->category, $product->code])}}" class="btn btn-default"
                    role="button">Details</a>
+                @csrf
+            </form>
             </p>
         </div>
     </div>
