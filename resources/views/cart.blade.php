@@ -27,28 +27,30 @@
                                 {{$product->name}}
                             </a>
                         </td>
-                        <td><span class="badge">1</span>
+                        <td><span class="badge">{{$product->pivot->count}}</span>
                             <div class="btn-group">
-                                <a type="button" class="btn btn-danger"
-                                   href=""><span
-                                        class="glyphicon glyphicon-minus" aria-hidden="true"><</span></a>
+                                <form action="{{route('cartRemove', $product)}}" method="post">
+                                    <button type="submit" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"><</span>
+                                    </button>
+                                    @csrf
+                                </form>
                                 <form action="{{route('cartAdd', $product)}}" method="post">
                                     <button type="submit" class="btn btn-success">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"><</span>
                                     </button>
                                     @csrf
                                 </form>
-
                             </div>
                         </td>
-                        <td>{{$product->price}} ₽</td>
-                        <td>{{$product->price}} ₽</td>
+                        <td>{{$product->price}} $</td>
+                        <td>{{$product->getPriceForCount()}} $</td>
                     </tr>
                 @endforeach
 
                 <tr>
                     <td colspan="3">Total Price:</td>
-                    <td>71990 ₽</td>
+                    <td>{{$order->getFullPrice()}} $</td>
                 </tr>
                 </tbody>
             </table>

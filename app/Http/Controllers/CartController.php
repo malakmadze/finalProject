@@ -17,10 +17,12 @@ class CartController extends Controller
         return view('cart', compact('order'));
     }
 
+
     public function cartOrder()
     {
         return view('order');
     }
+
 
     public function cartAdd($productId)
     {
@@ -31,8 +33,36 @@ class CartController extends Controller
         } else {
             $order = Order::find($orderId);
         }
-        $order->products()->attach($productId);
 
-        return view('cart', compact('order'));
+        if($order->products->contains($productId)){
+            $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
+            $pivotRow -> count++;
+            $pivotRow ->update();
+        }else {
+            $order->products()->attach($productId);
+        }
+
+        return redirect()->route('cart');
+    }
+
+    public function cartRemove($productId)
+    {
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('cart');
+        }
+        $order = Order::find($orderId);
+
+
+        if ($order->products->contains($productId)) {
+            $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
+            if ($pivotRow->count < 2) {
+                $order->products()->detach($productId);
+            } else {
+                $pivotRow->count--;
+                $pivotRow->update();
+            }
+            return redirect()->route('cart');
+        }
     }
 }
