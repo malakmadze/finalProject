@@ -1,6 +1,6 @@
 @extends ('master')
 
-@section('title', 'Category ' .$category->name)
+@section('title', 'Category')
 
 @section('content')
 
