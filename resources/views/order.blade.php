@@ -1,21 +1,19 @@
-@extends ('master')
+@extends ('layouts.master')
 
 @section('title', 'Checkout')
 
 @section('content')
 
-    <div class="starter-template">
-        <h1>Подтвердите заказ:</h1>
+        <h1>Order:</h1>
         <div class="container">
             <div class="row justify-content-center">
-                <p>Общая стоимость: <b>0 ₽.</b></p>
-                <form action="http://internet-shop.tmweb.ru/basket/place" method="POST">
+                <p>Total price: <b>{{$order->getFullPrice()}}.</b></p>
+                <form action="{{route('order-confirm')}}" method="POST">
                     <div>
-                        <p>Укажите свои имя и номер телефона, чтобы наш менеджер мог с вами связаться:</p>
-
+                        <p>Please fill your name and phone number:</p>
                         <div class="container">
                             <div class="form-group">
-                                <label for="name" class="control-label col-lg-offset-3 col-lg-2">Имя: </label>
+                                <label for="name" class="control-label col-lg-offset-3 col-lg-2">Name: </label>
                                 <div class="col-lg-4">
                                     <input type="text" name="name" id="name" value="" class="form-control">
                                 </div>
@@ -23,7 +21,7 @@
                             <br>
                             <br>
                             <div class="form-group">
-                                <label for="phone" class="control-label col-lg-offset-3 col-lg-2">Номер телефона: </label>
+                                <label for="phone" class="control-label col-lg-offset-3 col-lg-2">Phone number: </label>
                                 <div class="col-lg-4">
                                     <input type="text" name="phone" id="phone" value="" class="form-control">
                                 </div>
@@ -38,11 +36,13 @@
                             </div>
                         </div>
                         <br>
-                        <input type="hidden" name="_token" value="Jg1lxTbzCTsRxI4INggdkmX5L8Pwh7igip1JnNNd">                    <input type="submit" class="btn btn-success" value="Подтвердите заказ">
+                        <input type="hidden" name="_token" value="Jg1lxTbzCTsRxI4INggdkmX5L8Pwh7igip1JnNNd">
+                        <br>
+                        @csrf
+                        <input type="submit" class="btn btn-success" value="order">
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    </div>
+
 @endsection

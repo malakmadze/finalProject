@@ -1,10 +1,9 @@
-@extends ('master')
+@extends ('layouts.master')
 
 @section('title', 'Cart')
 
 @section('content')
 
-    <div class="starter-template">
         <p class="alert alert-success">Добавлен товар iPhone X 64GB</p>
         <h1>Cart</h1>
         <p>Finish order</p>
@@ -28,7 +27,7 @@
                             </a>
                         </td>
                         <td><span class="badge">{{$product->pivot->count}}</span>
-                            <div class="btn-group">
+                            <div class="btn-group form-inline">
                                 <form action="{{route('cartRemove', $product)}}" method="post">
                                     <button type="submit" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-minus" aria-hidden="true"><</span>
@@ -56,7 +55,7 @@
             </table>
             <br>
             <div class="btn-group pull-right" role="group">
-                <a type="button" class="btn btn-success" href="http://internet-shop.tmweb.ru/basket/place">Complete
+                <a type="button" class="btn btn-success" href="{{route('order')}}">Complete
                     Order</a>
             </div>
 @endsection
