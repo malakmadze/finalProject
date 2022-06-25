@@ -3,10 +3,9 @@
 @section('title', 'Authorization')
 
 @section('content')
-    <br>
     <div class="col-md-8">
         <div class="card">
-
+            <div class="card-header">Login</div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}" aria-label="Login">
                     @csrf
@@ -35,4 +34,5 @@
             </div>
         </div>
     </div>
+
 @endsection
