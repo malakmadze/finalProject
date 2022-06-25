@@ -1,11 +1,10 @@
-@extends ('master')
+@extends ('layouts.master')
 
 @section('title', 'Cart')
 
 @section('content')
 
-    <div class="starter-template">
-        <p class="alert alert-success">Добавлен товар iPhone X 64GB</p>
+
         <h1>Cart</h1>
         <p>Finish order</p>
         <div class="panel">
@@ -27,34 +26,36 @@
                                 {{$product->name}}
                             </a>
                         </td>
-                        <td><span class="badge">1</span>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-danger"
-                                   href=""><span
-                                        class="glyphicon glyphicon-minus" aria-hidden="true"><</span></a>
+                        <td><span class="badge">{{$product->pivot->count}}</span>
+                            <div class="btn-group form-inline">
+                                <form action="{{route('cartRemove', $product)}}" method="post">
+                                    <button type="submit" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"><</span>
+                                    </button>
+                                    @csrf
+                                </form>
                                 <form action="{{route('cartAdd', $product)}}" method="post">
                                     <button type="submit" class="btn btn-success">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"><</span>
                                     </button>
                                     @csrf
                                 </form>
-
                             </div>
                         </td>
-                        <td>{{$product->price}} ₽</td>
-                        <td>{{$product->price}} ₽</td>
+                        <td>{{$product->price}} $</td>
+                        <td>{{$product->getPriceForCount()}} $</td>
                     </tr>
                 @endforeach
 
                 <tr>
                     <td colspan="3">Total Price:</td>
-                    <td>71990 ₽</td>
+                    <td>{{$order->getFullPrice()}} $</td>
                 </tr>
                 </tbody>
             </table>
             <br>
             <div class="btn-group pull-right" role="group">
-                <a type="button" class="btn btn-success" href="http://internet-shop.tmweb.ru/basket/place">Complete
+                <a type="button" class="btn btn-success" href="{{route('order')}}">Complete
                     Order</a>
             </div>
 @endsection

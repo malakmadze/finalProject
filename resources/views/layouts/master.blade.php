@@ -23,17 +23,22 @@
                 <li ><a href="{{route('cart')}}">Shopping Cart</a></li>
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{route('index')}}">Login</a></li>
-
             </ul>
         </div>
     </div>
 </nav>
-
 <div class="container">
-    @yield('content')
+    <div class="starter-template">
+        @if(session()->has('success'))
+            <p class="alert alert-success">{{session()->get('success')}}</p>
+        @endif
+            @if(session()->has('warning'))
+            <p class="alert alert-warning">{{session()->get('warning')}}</p>
+        @endif
+        @yield('content')
+    </div>
 </div>
 </body>
 </html>
