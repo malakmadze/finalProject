@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
@@ -17,11 +18,13 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('get-logout');
 
 Route::group([
     'middleware' => 'auth',
-    'namespace' => 'Admin'
+//    'namespace' => 'Admin',
+    'prefix' => 'Admin',
     ], function(){
     Route::group(['middleware'=>'is_admin'],function(){
         Route::get('/orders', [OrderController::class, 'index'])->name('home');
     });
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
 });
 
 
