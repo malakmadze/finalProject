@@ -12,6 +12,11 @@ class Order extends Model
     }
     use HasFactory;
 
+//    public function user()
+//    {
+//        return $this->belongsTo(User::class);
+//    }
+
     public function getFullPrice(){
         $sum = 0;
         foreach ($this->products as $product){
