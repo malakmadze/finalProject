@@ -24,7 +24,13 @@
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{route('index')}}">Login</a></li>
+                @guest
+                    <li><a href="{{route('login')}}">Login</a></li>
+                @endguest
+                @auth
+                    <li><a href="{{route('home')}}">Admin Panel</a></li>
+                    <li><a href="{{route('get-logout')}}">logout</a></li>
+                @endauth
             </ul>
         </div>
     </div>
