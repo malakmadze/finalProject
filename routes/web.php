@@ -19,7 +19,9 @@ Route::group([
     'middleware' => 'auth',
     'namespace' => 'Admin'
     ], function(){
-    Route::get('/orders', [OrderController::class, 'index'])->name('home');
+    Route::group(['middleware'=>'is_admin'],function(){
+        Route::get('/orders', [OrderController::class, 'index'])->name('home');
+    });
 });
 
 
@@ -27,10 +29,22 @@ Route::group([
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 
-Route::get('/cart',[CartController::class, 'cart'])->name('cart');
-Route::get('/cart/order',[CartController::class, 'cartOrder'])->name('order');
-Route::post('/cart/add/{id}', [CartController::class, 'cartAdd'])->name('cartAdd');
-Route::post('/cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cartRemove');
+
+
+Route::group(['prefix'=> 'cart'], function(){
+    Route::post('/add/{id}', [CartController::class, 'cartAdd'])->name('cartAdd');
+    Route::group([
+        'middleware'=>'cart_not_empty',
+    ], function(){
+        Route::get('/',[CartController::class, 'cart'])->name('cart');
+        Route::get('/order',[CartController::class, 'cartOrder'])->name('order');
+        Route::post('/remove/{id}', [CartController::class, 'cartRemove'])->name('cartRemove');
+    });
+});
+
+
+
+
 
 Route::post('/cart/order',[CartController::class, 'cartConfirm'])->name('order-confirm');
 
