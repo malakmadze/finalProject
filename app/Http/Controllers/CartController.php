@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -15,7 +16,7 @@ class CartController extends Controller
         if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
         }
-            return view('cart', compact('order'));
+        return view('cart', compact('order'));
     }
 
     public function cartConfirm(Request $request)
@@ -61,6 +62,10 @@ class CartController extends Controller
             $pivotRow->update();
         } else {
             $order->products()->attach($productId);
+        }
+        if (Auth::check()){
+            $order->user_id = Auth::id();
+            $order->save();
         }
         $product = Product::find($productId);
         session()->flash('success', 'Item added ' . $product->name);
