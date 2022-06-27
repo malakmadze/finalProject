@@ -21,7 +21,6 @@
                 <li ><a href="{{route('categories')}}">Categories</a>
                 </li>
                 <li ><a href="{{route('cart')}}">Shopping Cart</a></li>
-                <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest
