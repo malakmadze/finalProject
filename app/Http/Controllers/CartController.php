@@ -13,6 +13,9 @@ class CartController extends Controller
     public function cart()
     {
         $orderId = session('orderId');
+        if(is_null($orderId)){
+            return redirect()->route('index');
+        }
         if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
         }
