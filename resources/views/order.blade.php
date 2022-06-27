@@ -28,8 +28,6 @@
                             </div>
                         </div>
                         <br>
-                        <input type="hidden" name="_token" value="Jg1lxTbzCTsRxI4INggdkmX5L8Pwh7igip1JnNNd">
-                        <br>
                         @csrf
                         <input type="submit" class="btn btn-success" value="order">
                     </div>

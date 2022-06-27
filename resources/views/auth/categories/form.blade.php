@@ -43,7 +43,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Описание: </label>
+                    <label for="description" class="col-sm-2 col-form-label">Description: </label>
                     <div class="col-sm-6">
 							<textarea name="description" id="description" cols="72"
                                       rows="7">@isset($category){{ $category->description }}@endisset</textarea>
