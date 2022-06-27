@@ -44,10 +44,16 @@
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Categories: </label>
                     <div class="col-sm-6">
-                        <select name="category_id" id="category_id" class="form-control">
-                            <option value="1">Mobile Phone</option>
-                            <option value="2">Portable</option>
-                            <option value="3">Houselod</option>
+                        <select name="category_id" id="category_id" class="form-control" >
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}"
+                                @isset($product)
+                                    @if($product->category_id == $category->id)
+                                        selected
+                                    @endif
+                                @endisset
+                                >{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
