@@ -29,9 +29,13 @@
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+
+                    @admin
                     <li><a href="{{route('categories.index')}}">Categories</a></li>
                     <li><a href="{{route('products.index')}}">Products</a></li>
                     <li><a href="{{route('home')}}">Orders</a></li>
+                    @endadmin
+
                 </ul>
                 @guest
                     <ul class="nav navbar-nav navbar-right">
@@ -49,7 +53,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false" v-pre>
-                                Administrator
+                                @admin Admin @else {{ Auth::user()->name }} @endadmin
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

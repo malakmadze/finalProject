@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Person\OrderController as PersonOrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
@@ -19,17 +20,30 @@ Auth::routes([
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('get-logout');
 
-Route::group([
-    'middleware' => 'auth',
-//    'namespace' => 'Admin',
-    'prefix' => 'Admin',
-], function () {
-    Route::group(['middleware' => 'is_admin'], function () {
-        Route::get('/orders', [OrderController::class, 'index'])->name('home');
+Route::middleware(['auth'])-> group (function(){
+    Route::group([
+        'prefix'=>'person',
+        'namespace' => 'Person',
+        'as'=>'person.',
+    ],function(){
+        Route::get('/orders', [PersonOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}', [PersonOrderController::class, 'show'])->name('orders.show');
     });
-    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
-    Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+    Route::group([
+//    'namespace' => 'Admin',
+        'prefix' => 'Admin',
+    ], function () {
+        Route::group(['middleware' => 'is_admin'], function () {
+            Route::get('/orders', [AdminOrderController::class, 'index'])->name('home');
+            Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('order.show');
+        });
+        Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+    });
+
 });
+
+
 
 
 Route::get('/', [MainController::class, 'index'])->name('index');
