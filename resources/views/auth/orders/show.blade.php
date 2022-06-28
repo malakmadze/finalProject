@@ -23,13 +23,13 @@
                         @foreach ($order->products as $product)
                             <tr>
                                 <td>
-                                    <a href="{{ route('product', $product) }}">
+                                    <p href="{{ route('product', $product->code) }}">
                                         <img height="56px"
                                              src="{{ Storage::url($product->image) }}">
                                         {{ $product->name }}
-                                    </a>
+                                    </p>
                                 </td>
-                                <td><span class="badge">1</span></td>
+                                <td><span class="badge">{{$product->pivot->count}}</span></td>
                                 <td>{{ $product->price }} $.</td>
                                 <td>{{ $product->getPriceForCount()}} $.</td>
                             </tr>

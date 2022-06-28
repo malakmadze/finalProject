@@ -54,8 +54,13 @@
                 </tbody>
             </table>
             <br>
+            @Auth
             <div class="btn-group pull-right" role="group">
                 <a type="button" class="btn btn-success" href="{{route('order')}}">Complete
                     Order</a>
             </div>
+        @endauth
+    @guest
+                <p><b>You have to be logged in to order!</b></p>
+    @endguest
 @endsection
