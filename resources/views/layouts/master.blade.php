@@ -27,7 +27,11 @@
                     <li><a href="{{route('login')}}">Login</a></li>
                 @endguest
                 @auth
-                    <li><a href="{{route('home')}}">Admin Panel</a></li>
+                    @admin
+                            <li><a href="{{route('home')}}">Admin Panel</a></li>
+                        @else
+                            <li><a href="{{route('person.orders.index')}}">My Orders</a></li>
+                        @endadmin
                     <li><a href="{{route('get-logout')}}">logout</a></li>
                 @endauth
             </ul>
