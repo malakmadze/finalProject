@@ -20,4 +20,7 @@ class Product extends Model
         }
         return $this->price;
     }
+    public function scopeByCode($query, $code){
+        return $query->where('code', $code);
+    }
 }

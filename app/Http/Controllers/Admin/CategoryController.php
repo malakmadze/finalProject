@@ -44,6 +44,7 @@ class CategoryController extends Controller
         $params = $request->all();
         unset($params['image']);
         if ($request->has('image')){
+//            $params['image'] = $request->file('image')->store('categories');
             $path = $request->file('image')->store('categories');
             $params['image'] = $path;
         }
@@ -86,6 +87,7 @@ class CategoryController extends Controller
         unset($params[ 'image']);
         if($request->has('image')){
             Storage::delete($category->image);
+//            $params['image'] = $request->file('image')->store('categories');
             $path = $request->file('image')->store('categories');
             $params['image'] = $path;
         }

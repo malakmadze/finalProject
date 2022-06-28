@@ -4,6 +4,7 @@
         <div class="caption">
             <h3>{{$product->name}}</h3>
             <p> {{$product->price}}</p>
+            <p> {{$product->description}}</p>
             <p>
             <form action="{{route('cartAdd', $product)}}" method="post">
                 <button type="submit" class="btn btn-primary"
