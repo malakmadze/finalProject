@@ -9,9 +9,9 @@
 @section('content')
     <div class="col-md-12">
         @isset($product)
-            <h1>Edit <b>{{ $product->name }}</b></h1>
+            <h1>@lang('products.edit') <b>{{ $product->name }}</b></h1>
         @else
-            <h1>Add</h1>
+            <h1>@lang('products.add')</h1>
         @endisset
         <form method="POST" enctype="multipart/form-data"
               @isset($product)
@@ -37,7 +37,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Name: </label>
+                    <label for="name" class="col-sm-2 col-form-label">@lang('products.name'): </label>
                     <div class="col-sm-6">
                         @error('name')
                         <div class="alert alert-danger">{{$message}}</div>
@@ -48,7 +48,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="category_id" class="col-sm-2 col-form-label">Categories: </label>
+                    <label for="category_id" class="col-sm-2 col-form-label">@lang('products.categories'): </label>
                     <div class="col-sm-6">
                         <select name="category_id" id="category_id" class="form-control" >
                             @foreach($categories as $category)
@@ -65,7 +65,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Description: </label>
+                    <label for="description" class="col-sm-2 col-form-label">@lang('products.description'): </label>
                     <div class="col-sm-6">
                         @error('description')
                             <div class="alert alert-danger">{{$message}}</div>
@@ -76,16 +76,16 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="image" class="col-sm-2 col-form-label">Image: </label>
+                    <label for="image" class="col-sm-2 col-form-label">@lang('products.image'): </label>
                     <div class="col-sm-10">
                         <label class="btn btn-default btn-file">
-                            Upload <input type="file" style="display: none;" name="image" id="image">
+                            @lang('products.upload') <input type="file" style="display: none;" name="image" id="image">
                         </label>
                     </div>
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="price" class="col-sm-2 col-form-label">Price: </label>
+                    <label for="price" class="col-sm-2 col-form-label">@lang('products.price'): </label>
                     <div class="col-sm-2">
                         @error('price')
                             <div class="alert alert-danger">{{$message}}</div>
@@ -94,7 +94,7 @@
                                value="{{old('price', isset($product)? $product->price : null)}}">
                     </div>
                 </div>
-                <button class="btn btn-success">Save</button>
+                <button class="btn btn-success">@lang('products.save')</button>
             </div>
         </form>
     </div>

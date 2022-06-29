@@ -31,7 +31,7 @@ class CartController extends Controller
         $order = Order::find($orderId);
         $success = $order->saveOrder($request->name, $request->phone);
         if ($success) {
-            session()->flash('success', 'Your order is received');
+            session()->flash('success', __('controller.rcved'));
         } else {
             session()->flash('warning', 'Error');
         }
@@ -71,7 +71,7 @@ class CartController extends Controller
             $order->save();
         }
         $product = Product::find($productId);
-        session()->flash('success', 'Item added ' . $product->name);
+        session()->flash('success', __('controller.item_added') . $product->name);
         return redirect()->route('cart');
     }
 
@@ -93,7 +93,7 @@ class CartController extends Controller
                 $pivotRow->update();
             }
             $product = Product::find($productId);
-            session()->flash('warning', 'Item removed ' . $product->name);
+            session()->flash('warning', __('controller.item_removed') . $product->name);
             return redirect()->route('cart');
         }
     }

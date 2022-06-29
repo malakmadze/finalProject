@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class MainController extends Controller
 {
@@ -36,5 +37,15 @@ class MainController extends Controller
 
     public function cartOrder(){
         return view('order');
+    }
+
+    public function changeLocale($locale){
+        $availableLocales = ['en', 'ru'];
+        if (!in_array($locale, $availableLocales)){
+            $locale = config ('app.locale');
+        }
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
     }
 }

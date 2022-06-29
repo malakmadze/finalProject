@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
+    <title>@lang('main.online_shop'): @yield('title')</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/starter-template.css" rel="stylesheet">
@@ -13,26 +13,27 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{route('index')}}">Online Shop</a>
+            <a class="navbar-brand" href="{{route('index')}}">{{__('main.online_shop')}}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{route('index')}}">All Products</a></li>
-                <li ><a href="{{route('categories')}}">Categories</a>
+                <li class="active"><a href="{{route('index')}}">@lang('main.all_products')</a></li>
+                <li ><a href="{{route('categories')}}">@lang('main.categories')</a>
                 </li>
-                <li ><a href="{{route('cart')}}">Shopping Cart</a></li>
+                <li ><a href="{{route('cart')}}">@lang('main.shopping_cart')</a></li>
+                <li><a href="{{route('locale', __('main.set_lang'))}}">@lang('main.set_lang')</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest
-                    <li><a href="{{route('login')}}">Login</a></li>
+                    <li><a href="{{route('login')}}">@lang('main.login')</a></li>
                 @endguest
                 @auth
                     @admin
-                            <li><a href="{{route('home')}}">Admin Panel</a></li>
+                            <li><a href="{{route('home')}}">@lang('main.admin_panel')</a></li>
                         @else
-                            <li><a href="{{route('person.orders.index')}}">My Orders</a></li>
+                            <li><a href="{{route('person.orders.index')}}">@lang('main.my_orders')</a></li>
                         @endadmin
-                    <li><a href="{{route('get-logout')}}">logout</a></li>
+                    <li><a href="{{route('get-logout')}}">@lang('main.logout')</a></li>
                 @endauth
             </ul>
         </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin: @yield('title')</title>
+    <title>@lang('main.admin'): @yield('title')</title>
 
     {{--    <!-- Scripts -->--}}
     <script src="/js/app.js" defer></script>
@@ -24,26 +24,26 @@
     <nav class="navbar navbar-default navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{route('index')}}">
-                Main Page
+                @lang('main.main_page')
             </a>
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
 
                     @admin
-                    <li><a href="{{route('categories.index')}}">Categories</a></li>
-                    <li><a href="{{route('products.index')}}">Products</a></li>
-                    <li><a href="{{route('home')}}">Orders</a></li>
+                    <li><a href="{{route('categories.index')}}">@lang('main.categories')</a></li>
+                    <li><a href="{{route('products.index')}}">@lang('main.product')</a></li>
+                    <li><a href="{{route('home')}}">@lang('main.orders')</a></li>
                     @endadmin
 
                 </ul>
                 @guest
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Login</a>
+                            <a class="nav-link" href="{{route('login')}}">@lang('main.login')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('register')}}">Register</a>
+                            <a class="nav-link" href="{{route('register')}}">@lang('main.register')</a>
                         </li>
                     </ul>
                 @endguest
@@ -60,7 +60,7 @@
                                 <a class="dropdown-item" href="{{ route('logout')}}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    Logout
+                                    @lang('main.logout')
                                 </a>
                                 <form id="logout-form" action="{{ route('logout')}}" method="POST"
                                       style="display: none;">

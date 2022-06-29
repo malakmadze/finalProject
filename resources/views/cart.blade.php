@@ -5,16 +5,16 @@
 @section('content')
 
 
-        <h1>Cart</h1>
-        <p>Finish order</p>
+        <h1>@lang('main.basket')</h1>
+        <p>@lang('main.finish_order')</p>
         <div class="panel">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th>@lang('main.name')</th>
+                    <th>@lang('main.quantity')</th>
+                    <th>@lang('main.price')</th>
+                    <th>@lang('main.total')</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
                 @endforeach
 
                 <tr>
-                    <td colspan="3">Total Price:</td>
+                    <td colspan="3">@lang('main.total_price'):</td>
                     <td>{{$order->getFullPrice()}} $</td>
                 </tr>
                 </tbody>
@@ -56,11 +56,10 @@
             <br>
             @Auth
             <div class="btn-group pull-right" role="group">
-                <a type="button" class="btn btn-success" href="{{route('order')}}">Complete
-                    Order</a>
+                <a type="button" class="btn btn-success" href="{{route('order')}}">@lang('main.complete_order')</a>
             </div>
         @endauth
     @guest
-                <p><b>You have to be logged in to order!</b></p>
+                <p><b>@lang('main.note')</b></p>
     @endguest
 @endsection

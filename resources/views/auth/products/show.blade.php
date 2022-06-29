@@ -9,10 +9,10 @@
             <tbody>
             <tr>
                 <th>
-                    Field
+                    @lang('orders.field')
                 </th>
                 <th>
-                    Value
+                    @lang('orders.value')
                 </th>
             </tr>
             <tr>
@@ -20,23 +20,23 @@
                 <td>{{ $product->id}}</td>
             </tr>
             <tr>
-                <td>Code</td>
+                <td>@lang('orders.code')</td>
                 <td>{{ $product->code }}</td>
             </tr>
             <tr>
-                <td>Name</td>
+                <td>@lang('orders.name')</td>
                 <td>{{ $product->name }}</td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td>@lang('orders.description')</td>
                 <td>{{ $product->description }}</td>
             </tr>
             <tr>
-                <td>Image</td>
+                <td>@lang('orders.image')</td>
                 <td><img src="{{Storage::url($product->image)}}" height="240px"></td>
             </tr>
             <tr>
-                <td>Category</td>
+                <td>@lang('orders.category')</td>
                 <td>{{ $product->category->name }}</td>
             </tr>
             </tbody>
