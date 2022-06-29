@@ -12,13 +12,13 @@
                     #
                 </th>
                 <th>
-                    Code
+                    @lang('categories.code')
                 </th>
                 <th>
-                    Name
+                    @lang('categories.name')
                 </th>
                 <th>
-                    Action
+                    @lang('categories.action')
                 </th>
             </tr>
             @foreach($categories as $category)
@@ -29,8 +29,8 @@
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('categories.destroy', $category) }}" method="POST">
-                                <a class="btn btn-success" type="button" href="{{ route('categories.show', $category) }}">Open</a>
-                                <a class="btn btn-warning" type="button" href="{{ route('categories.edit', $category) }}">Edit</a>
+                                <a class="btn btn-success" type="button" href="{{ route('categories.show', $category) }}">@lang('categories.open')</a>
+                                <a class="btn btn-warning" type="button" href="{{ route('categories.edit', $category) }}">@lang('categories.edit')</a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="Delete"></form>
@@ -41,6 +41,6 @@
             </tbody>
         </table>
         <a class="btn btn-success" type="button"
-           href="{{ route('categories.create') }}">Add category</a>
+           href="{{ route('categories.create') }}">@lang('categories.add_category')</a>
     </div>
 @endsection

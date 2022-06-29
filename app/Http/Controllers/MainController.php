@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class MainController extends Controller
 {
@@ -22,9 +23,13 @@ class MainController extends Controller
 
         return view('category', compact('category'));
     }
-    public function product($category, $product=null){
-        return view('product', ['product' =>$product]);
+    public function product($category, $productCode){
+        $product = Product::byCode($productCode)->first();
+        return view('product', compact('product'));
     }
+//    public function product($category, $product=null){
+//        return view('product', ['product' =>$product]);
+//    }
 
     public function cart(){
         return view('cart');
@@ -32,5 +37,15 @@ class MainController extends Controller
 
     public function cartOrder(){
         return view('order');
+    }
+
+    public function changeLocale($locale){
+        $availableLocales = ['en', 'ru'];
+        if (!in_array($locale, $availableLocales)){
+            $locale = config ('app.locale');
+        }
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
     }
 }

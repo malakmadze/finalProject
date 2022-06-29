@@ -9,10 +9,10 @@
             <tbody>
             <tr>
                 <th>
-                    Field
+                    @lang('categories.field')
                 </th>
                 <th>
-                    Value
+                    @lang('categories.value')
                 </th>
             </tr>
             <tr>
@@ -20,24 +20,24 @@
                 <td>{{ $category->id }}</td>
             </tr>
             <tr>
-                <td>Code</td>
+                <td>@lang('categories.code')</td>
                 <td>{{ $category->code }}</td>
             </tr>
             <tr>
-                <td>Name</td>
+                <td>@lang('categories.name')</td>
                 <td>{{ $category->name }}</td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td>@lang('categories.description')</td>
                 <td>{{ $category->description }}</td>
             </tr>
             <tr>
-                <td>Image</td>
+                <td>@lang('categories.photo')</td>
                 <td><img src="{{Storage::url($category->image)}}"
                          height="240px"></td>
             </tr>
             <tr>
-                <td>Product count</td>
+                <td>@lang('categories.product_count')</td>
                 <td>{{ $category->products->count() }}</td>
             </tr>
             </tbody>

@@ -7,35 +7,35 @@
         <div class="container">
             <div class="justify-content-center">
                 <div class="panel">
-                    <h1>Order №{{ $order->id }}</h1>
-                    <p>Customer: <b>{{ $order->name }}</b></p>
-                    <p>Phone Number: <b>{{ $order->phone }}</b></p>
+                    <h1>@lang('orders.order') №{{ $order->id }}</h1>
+                    <p>@lang('orders.customer'): <b>{{ $order->name }}</b></p>
+                    <p>@lang('orders.phone_number'): <b>{{ $order->phone }}</b></p>
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Total Price</th>
+                            <th>@lang('orders.name')</th>
+                            <th>@lang('orders.quantity')</th>
+                            <th>@lang('orders.price')</th>
+                            <th>@lang('orders.total_price')</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($order->products as $product)
                             <tr>
                                 <td>
-                                    <a href="{{ route('product', $product) }}">
+                                    <p href="{{ route('product', $product->code) }}">
                                         <img height="56px"
                                              src="{{ Storage::url($product->image) }}">
                                         {{ $product->name }}
-                                    </a>
+                                    </p>
                                 </td>
-                                <td><span class="badge">1</span></td>
+                                <td><span class="badge">{{$product->pivot->count}}</span></td>
                                 <td>{{ $product->price }} $.</td>
                                 <td>{{ $product->getPriceForCount()}} $.</td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td colspan="3">Total Price:</td>
+                            <td colspan="3">@lang('orders.total_price'):</td>
                             <td>{{ $order->getFullPrice() }} $.</td>
                         </tr>
                         </tbody>

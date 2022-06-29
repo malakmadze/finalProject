@@ -4,12 +4,13 @@
         <div class="caption">
             <h3>{{$product->name}}</h3>
             <p> {{$product->price}}</p>
+            <p> {{$product->description}}</p>
             <p>
             <form action="{{route('cartAdd', $product)}}" method="post">
                 <button type="submit" class="btn btn-primary"
-                        role="button">Add to cart</button>
+                        role="button">@lang('main.cart')</button>
                 <a href="{{route('product', [$product->category, $product->code])}}" class="btn btn-default"
-                   role="button">Details</a>
+                   role="button">@lang('main.more')</a>
                 @csrf
             </form>
         </div>

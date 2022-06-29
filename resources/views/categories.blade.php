@@ -8,7 +8,7 @@
             <div class="panel">
                 <a href="{{route('category',$category->code)}}">
                     <img src="{{Storage::url($category->image)}}">
-                    <h2>{{$category->name}}</h2>
+                    <h1>{{$category->name}}</h1>
                 </a>
                 <p>
                     {{$category->description}}
