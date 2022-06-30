@@ -34,4 +34,12 @@ class CategoryRequest extends FormRequest
         }
         return $rules;
     }
+
+    public function messages()
+    {
+        return [
+            'required' => __('categories.required'),
+            'min' => __('categories.min'),
+        ];
+    }
 }

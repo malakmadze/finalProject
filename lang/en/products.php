@@ -15,8 +15,8 @@ return [
     'action' => 'Action',
     'open' => 'Open',
     'add_product' => 'Add Product',
-
     'field' => 'Field',
     'value' => 'Value',
-
+    'required'=> 'The :attribute field is required',
+    'min' => ' The :attribute must be at least  :min characters',
 ];

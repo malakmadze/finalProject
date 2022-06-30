@@ -14,6 +14,13 @@ return [
     'quantity' => 'Quantity',
     'price' => 'Price',
 
+    'description' => 'Description',
+    'code' => 'Code',
+    'image' => 'Image' ,
+    'field' => 'Field',
+    'category' => 'Category',
+    'value' => 'Value',
+
 
 
 ];

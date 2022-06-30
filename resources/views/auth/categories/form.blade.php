@@ -63,7 +63,7 @@
                     <label for="image" class="col-sm-2 col-form-label">@lang('categories.photo'): </label>
                     <div class="col-sm-10">
                         <label class="btn btn-default btn-file">
-                            Upload <input type="file" style="display: none;" name="image" id="image">
+                            @lang('categories.upload') <input type="file" style="display: none;" name="image" id="image">
                         </label>
                     </div>
                 </div>
