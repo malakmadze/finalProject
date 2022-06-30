@@ -14,7 +14,10 @@ return[
     'field'=>'Field',
     'value'=>'Value',
     'product_count' => 'Product Count',
-
+    'required'=> 'The :attribute field is required',
+    'min' => ' The :attribute must be at least  :min characters',
+    'upload' => 'Upload',
+    'categories' => 'Categories',
 
 
 

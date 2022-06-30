@@ -36,4 +36,12 @@ class ProductRequest extends FormRequest
 
         return $rules;
     }
+
+    public function messages()
+    {
+        return [
+            'required' => __('products.required'),
+            'min' => __('products.min'),
+        ];
+    }
 }
